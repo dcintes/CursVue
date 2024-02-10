@@ -100,11 +100,11 @@ Al component pare hem de definir un mètode que s'executarà quant el fill cridi
 <ExpedientCard @update="actualitzaExpedient"/>
 ```
 
-> Curiositat
-
-Al cridar un emit no sabem si el component pare ha establert un mètode que s'executarà. En alguns casos calcular el valor que s'ha d'emetre pot ser costos i ens interessa saber si el pare ha definit un mètode o no ja que en cas negatiu no fa falta executar la lògica.
-
-En aquests casos podem definir una Prop amb el mateix nom del mètode precedida de 'on':
+> **Curiositat:**
+> 
+> Al cridar un emit no sabem si el component pare ha establert un mètode que s'executarà. En alguns casos calcular el valor que s'ha d'emetre pot ser costos i ens interessa saber si el pare ha definit un mètode o no ja que en cas negatiu no fa falta executar la lògica.
+> 
+> En aquests casos podem definir una Prop amb el mateix nom del mètode precedida de 'on':
 
 ```typescript
 interface Props {

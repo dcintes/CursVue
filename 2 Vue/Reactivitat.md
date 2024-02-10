@@ -43,11 +43,11 @@ nom.value
 
 Les "variables" computed executen una funció per a calcular el seu valor i reaccionen als canvis de les variables reactives que s'hi defineixen.
 
-Es a dir, es subscriuen als canvis de les variables reactives i executan la funció cada vegada que hi ha un canvi per a calcular el valor. El valor resultant també es reactiu.
+Es a dir, es subscriuen als canvis de les variables reactives i executen la funció cada vegada que hi ha un canvi per a calcular el valor. El valor resultant també es reactiu.
 
 ```typescript
 // Calculam el nom complet a partir del nom i llinatges de la persona. Notar que persona és tipus ref
-const nom_complet = computed(() => {
+const nomComplet = computed(() => {
   return persona.value.nom + ' ' + persona.value.llinatges
 })
 ```
@@ -60,9 +60,9 @@ const variableNom = computed({
 }
 ```
 
-> Cas pràctic
-
-El cas més útil per a usar aquesta forma avançada del computed és en combinació de les props, emits i la directiva v-model.
+> **Cas pràctic**
+> 
+> El cas més útil per a usar aquesta forma avançada del computed és en combinació de les props, emits i la directiva v-model.
 
 ```typescript
 const value = computed({
@@ -75,7 +75,7 @@ const value = computed({
 })
 ```
 
-En aquest cas, la variable `value` agafa el valor de la propietat `modelValue` i cada vegada que es realitza un canvi a la variable value, s'actualitza de forma automàtica mitjançant l'emit. Això ens sinconitza la propietat del component pare i del fill de forma automàtica.
+> En aquest cas, la variable `value` agafa el valor de la propietat `modelValue` i cada vegada que es realitza un canvi a la variable value, s'actualitza de forma automàtica mitjançant l'emit. Això ens sinconitza la propietat del component pare i del fill de forma automàtica.
 
 ### watch
 
@@ -98,7 +98,18 @@ Notar que el desencadenant es una propietat reactiva (pot ser ref, computed...).
 
 ### toRef
 
-La forma de convertir una propietat no reactiva a reactiva es mitjançant toRef.
+La forma de convertir una propietat no reactiva a reactiva es mitjançant toRef. Aquesta es pot definir de multiples formes:
 ```typescript
+// Amb una funció
 const persona = toRef(() => props.persona)
+// Amb paràmetres
+const persona = toRef(props,'persona')
+```
+
+### toRefs
+
+Semblant a toRef però convertint totes les propietats d'un objecte a reactives.
+
+```typescript
+const { persona, estat } = toRefs(props)
 ```

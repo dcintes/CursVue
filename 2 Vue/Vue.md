@@ -114,7 +114,7 @@ Com el seu nom indica ens permet recorrer un llistat per a renderitzar el contin
 </div>
 ```
 
-> NOTA: No esta recomanant l'us de `v-for` i `v-if` al mateix element HTML degut a que el comportament pot resultar no intuitiu. EL seguent codi no funcionaria.
+> **NOTA:** No esta recomanant l'us de `v-for` i `v-if` al mateix element HTML degut a que el comportament pot resultar no intuitiu. EL seguent codi no funcionaria.
 
 ```html
 <div v-for="nota of notes" v-if="nota > 5"></div>
