@@ -175,7 +175,9 @@ ExpedientRepo.all()
 // Uns registres per id
 ExpedientRepo.find([1,2,3])
 ```
+
 Podem realitzar consultes
+
 ```typescript
 ExpedientRepo.where('tipus',TipusExpedinet.normal)
   .where('actiu', true)
@@ -185,9 +187,6 @@ ExpedientRepo.where('tipus',TipusExpedinet.normal)
 ExpedientRepo.where('data', (data) => dataEntre(data,'01/01/2024','01/01/2025'))
 // O únic paràmetre una funció
 ExpedientRepo.where(expedient => expedient.id > 10 && expedient.actiu == false)
-
-// 
-ExpedientRepo.where('')
 ```
 
 Per a no allargar no entrarem en molt més detall, podeu trobar més informació a la [web oficial](https://pinia-orm.codedredd.de/guide/repository/retrieving-data)
@@ -263,3 +262,19 @@ persones: [
 ```
 
 ### Eliminar
+
+Podem eliminar dades de dues maneres principalment, per l'id o a través d'una consulta.
+
+```typescript
+ExpedientRepo.destroy(1)
+
+ExpedientRepo.destroy([1,2,3])
+
+ExpedientRepo.where('actiu', false).delete()
+```
+
+## Conclusió
+
+Pinia ORM ens permet gestionar les dades al frontal com si d'una Base de dades es tractes. Això no ens ha de confondre ja que no te cap relació ni sincronització amb la base de dades real i tampoc ha de ser una copia d'aquesta, únicament hem de gestionar les dades que ens son necessaries a la sessió.
+
+Si volem gestionar les dades correctament hem de tenir en compte que hem d'afegir els elements, actualitzar-los i eliminar-los després de les respostes positives amb l'API. Això ho veurem més endavant.
