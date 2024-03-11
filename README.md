@@ -13,7 +13,7 @@
 1. Stores
    - [Pinia](./4%20Stores:%20Pinia%20i%20ORM/Pinia.md)
    - [PiniaORM](./4%20Stores:%20Pinia%20i%20ORM/PiniaORM.md)
-1. [TanStack](./6%20TanStack/Tanstack.md)
-   - [Composable peticions API](./6%20TanStack/Cas.md)
-1. [Quasar](./5%20Quasar/quasar.md)
+1. [TanStack](./5%20TanStack/Tanstack.md)
+   - [Composable peticions API](./5%20TanStack/IntegracioCrud.md)
+1. [Quasar](./6%20Quasar/quasar.md)
 1. [Projecte](./7%20Projecte/Projecte.md)
