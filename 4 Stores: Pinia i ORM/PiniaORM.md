@@ -75,6 +75,17 @@ export class Expedient extends Model {
   @Bool(null)
   declare urgent: boolean
   // Es habitual que els booleans puguin venir com a 1/0 en lloc de true/false
+
+  // Mètode opcional, realitza una còpia de la instancia
+  static from(from?: Expedient): Expedient {
+    const to = new Expedient()
+
+    if (from) {
+      Object.assign(to, { ...from })
+    }
+
+    return to
+  }
 }
 ```
 
@@ -143,6 +154,21 @@ import { BelongsToMany } from 'pinia-orm/decorators'
 export class UsuariRol extends Model {
 
   @BelongsToMany(() => Rol, () => UsduariRol, 'usuari_id', 'rol_id') declare rols: Rol[]
+  
+  // Declaram aquesta propietat per usar-la al formulari, no te una relació directa amb pinia. Al no tenir el decorador no es guarda a l'store.
+  declare rols_id: number[]
+
+  static from(from?: Expedient): Expedient {
+    const to = new Expedient()
+
+    if (from) {
+      Object.assign(to, { ...from })
+       // Si feim us del mètode from es un bon lloc per mapejar els id
+      to.rols_id = from.rols?.map(r => r.id)
+    }
+
+    return to
+  }
 }
 ```
 
