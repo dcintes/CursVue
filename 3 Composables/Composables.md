@@ -1,10 +1,10 @@
 # Composables
 
-Els composables son fragmets de lògica de codi reutilitzable que no tenen un component gràfic. L'objectiu es evitar definir una vegada i una altre el mateix còdi a cada pàgina, amb l'efecte de que al voler fer una millora aquesta s'aplicarà a totes les pagines editant un únic fitxer. 
+Els composables són fragmets de lògica de codi reutilitzable que no tenen un component gràfic. L'objectiu és evitar definir, una vegada i una altra, el mateix codi a cada pàgina, amb l'efecte de que en voler fer una millora, aquesta s'aplicarà a totes les pàgines editant un únic fitxer. 
 
 ## Estructura bàsica
 
-- Els composables han d'anar dins la carpeta composables del mòdul en qüestió i en el seu defecte dins shared
+- Els composables han d'anar dins la carpeta composables del mòdul en qüestió i, en el seu defecte, dins shared
 - El nom del composable ha de començar per use. Ex: useExpedient, useFitxer...
 - El composable ha de tenir un return amb les propietats i mètodes que exposa
 
@@ -40,19 +40,19 @@ Anam a veure uns exemples pràctics (versió simplificada d'ells) que es troben 
 
 ### useLoading
 
-L'utilitat d'aquest composable es mostrar un loading quant l'element que hem de mostrar encara no s'ha carregat. 
+La utilitat d'aquest composable és mostrar un loading quant l'element que hem de mostrar encara no s'ha carregat. 
 
 Aquest loading s'ha de mostrar si:
-- S'esta fent la petició
-- No tenim l'element previament carregat
+- S'està fent la petició
+- No tenim l'element prèviament carregat
 
 ```typescript
 const useLoading = (
-  isFetching, // Ens indica si s'esta fent la petició al back
+  isFetching, // Ens indica si s'està fent la petició al back
   model // Model reactiu
 ) =>{
 
-  // Loading serà true si esta fent la petició a l'API i el model no esta emplenat.
+  // Loading serà true si està fent la petició a l'API i el model no està emplenat.
   const loading = computed(() => isFetching.value && !model.value)
 
   // Escoltam els canvis a la variable loading
@@ -77,11 +77,11 @@ const useLoading = (
 
 ### useSelectFiltre
 
-Aquest composable simplifica la creació de filtres per al desplegables que son molt llargs, com el de paísos o municipis
+Aquest composable simplifica la creació de filtres per als desplegables que són molt llargs, com el de països o municipis
 
 Partim d'un llistat d'elements totals i volem obtenir el mètode per a filtrar i el llistat filtrat.
 
-Encara que en el composable del core els paràmetres son opcionals els farem obligatoris en aquest exemple.
+Encara que en el composable del core els paràmetres són opcionals els farem obligatoris en aquest exemple.
 
 ```typescript
 export const useSelectFilter = ({
@@ -91,7 +91,7 @@ export const useSelectFilter = ({
   searchFiled, // Camp per el que volem filtrar
 }) => {
 
-  // Carregam les dades a una nova variable per a normalitzar(majuscules, llevar accents...) el camp de cerca
+  // Carregam les dades a una nova variable per a normalitzar(majúscules, llevar accents...) el camp de cerca
   const fullData = computed(() => {
     repo.value.map(d => {
       return {

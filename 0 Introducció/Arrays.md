@@ -34,18 +34,18 @@ const valorInicial = 0;
 const total = ajudes.reduce((acumulat, element) => {
       return acumulat + element.quantitatAjuda;
    },
-   valorInicial // el valor inicial es podria definir directament, és el valor que tedrà acumulat en el primer element
+   valorInicial // el valor inicial es podria definir directament, és el valor que tendrà acumulat en el primer element
 ); 
 ```
 
 ## Every / some
-Semblant a reduce però en aquest cas ens verifica si tots els elements de l'array compleixen una condició.
+Semblant a reduce però en aquest cas ens verifica si tots els elements del array compleixen una condició.
 ```typescript
-// Volem saber si totes les persones d'un array son majors de 65 anys
+// Volem saber si totes les persones d'un array són majors de 65 anys
 const totsMajors = persones.every((element) => {
    return element.edat > 65;
 });
-// Si ho son totsMajors serà true, sinó serà false
+// Si ho són totsMajors serà true, sinó serà false
 ```
 El cas de some és igual però ens indicarà si algun element compleix la condició
 ```typescript

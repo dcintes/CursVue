@@ -3,14 +3,14 @@
 En aquest apartat es descriuran les novetats per a tots aquells que venguin de jQuery.
 
 ## Variable
-La definició de variables amb var deixa d'estar recomanada en favor de let i const
+La definició de variables amb `var` deixa de ser recomanada en favor de `let` i `const`
 
 ```javascript
 let nom = "Juan"
 const edat = 10; // No permet reasignació
 ```
 ## Objectes
-Definició d'objectes amb json i acces a propietats per notació per punt
+Definició d'objectes amb json i accés a propietats per notació per punt
 ```javascript
 const person = {
    name: 'Steve',
@@ -18,7 +18,7 @@ const person = {
    hobbies: ['waterpolo', 'reading']
 }
 
-// Accces a les propietats
+// Acccés a les propietats
 const name = person.name;
 
 /* Propietats per shorthand */
@@ -27,7 +27,7 @@ const per = {
    name,
    age: '30',
 }
-// Es equivalent a:
+// És equivalent a:
 const per = {
    name: 'Steve',
    age: '30',
@@ -49,11 +49,11 @@ let [a, b, c] = arr;
 > Exemple pràctic
 
 ```html
-// Suposem que volem customitzar slot body de un datatable:
+// Suposem que volem customitzar slot body d'un datatable:
 <template #body="slotProps">{{ slotProps.data.name }}</template>
 ```
 
-Podriem decompondre aquesta variable en les seves propietats
+Podríem descompondre aquesta variable en les seves propietats
 
 ```html
 <template #body="{data}">{{ data.name }}</template>
@@ -127,7 +127,7 @@ multiply(); // 4
 ```
 
 ## Arrow function
-Els arroy function son una forma de crear funcions de forma "incrustada"
+Els arrow function són una forma de crear funcions de forma "incrustada"
 ```javascript
 (e) => {
    return e*2;
@@ -137,13 +137,13 @@ function(e) {
    return e*2;
 }
 ```
-El format dels arrow funcion es: `(params...) => { //code }`. Podem tenir dues variacions (per si trobau el cas):
-1. Si el mètode reb únicament un paràmetre es pot prescindir del parentèsis `param => { //code }`
+El format dels arrow funcion és: `(params...) => { //code }`. Podem tenir dues variacions (per si trobau el cas):
+1. Si el mètode reb únicament un paràmetre es pot prescindir del parèntesi `param => { //code }`
 2. Si el codi retorna un valor directament es pot prescindir del claudàtor {} `(e) => e.nom ` seria equivalent a `(e) => { return e.nom }`
 
 > Exemple pràctic
 
-Un exemple clar on podem usar aquestes funcions és en el retorn d'un callback
+Un exemple clar en el qual podem usar aquestes funcions és en el retorn d'un callback
 ```javascript
 service.getAll().then(
    // Arrou funcion
@@ -161,7 +161,7 @@ Salutacions`
 ```
 
 ## Classes i Herencia
-Es poden definir classes i herencia entre elles
+Es poden definir classes i herència entre elles
 ```javascript
 class Person {
    constructor(name){

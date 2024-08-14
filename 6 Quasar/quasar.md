@@ -1,8 +1,8 @@
 # Quasar
 
-Quasar es un framework de Vue. Apart de facilitar la configuració de projectes amb Vue (a l'esquelet ja ve tot configurat) ens aporta tota una col·lecció de components, classes CSS i composables per a facilitar la creació de les nostres pàgines.
+Quasar és un framework de Vue. A més de facilitar la configuració de projectes amb Vue (a l'esquelet ja ve tot configurat) ens aporta tota una col·lecció de components, classes CSS i composables per a facilitar la creació de les nostres pàgines.
 
-A aquest tema no entrarem en detall de tot el contingut de quasar ja que no acabariem mai, sera una tasca que haureu d'anar investigant poc a poc. El que si que farem es estudiar les pantalles més típiques que vos podreu trobar usant els components de Quasar.
+A aquest tema no entrarem en detall de tot el contingut de quasar, ja que no acabaríem mai, serà una tasca que haureu d'anar investigant poc a poc. El que sí que farem és estudiar les pantalles més típiques que us podreu trobar usant els components de Quasar.
 
 ## Primeres passes
 
@@ -10,15 +10,15 @@ Abans d'entrar en els exemples farem un petit recorregut de com navegar per la d
 
 La primera passa serà accedir a la documentació: https://quasar.dev/components
 
-Els elements del menú que més atenció prestarem son:
+Els elements del menú que més atenció prestarem són:
 
 ![alt text](images/menu_quasar.png)
 
-1. **Style & Identity**: Aquí trobarem el conjunt de classes css per donar format. Seria dessitjable usar aquestes classes abans que crear les nostres propies.
-1. **Layout and grid**: Classes css per organitzar les pàgines amb el tipic patró de 12 columnes. Si teniu dubtes sobre el funcionament de flex, es de lectura obligatoria [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-1. **Vue Components**: Entram a la part central de Quasar amb tota la colecció de components que tenim disponibles. Seria recomanable pegar una ullada a tot el que hi ha disponible.
+1. **Style & Identity**: Aquí trobarem el conjunt de classes css per donar format. Seria dessitjable usar aquestes classes abans que crear les nostres pròpies.
+1. **Layout and grid**: Classes css per organitzar les pàgines amb el típic patró de 12 columnes. Si teniu dubtes sobre el funcionament de flex, és de lectura obligatòria [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+1. **Vue Components**: Entram a la part central de Quasar amb tota la colecció de components que tenim disponibles. Seria recomanable pegar una ullada a tot allò que hi ha disponible.
 
-La resta d'apartats com les Directives i els Composables, encara que son útils i estaria bé coneixer-ho, quedarien com un contingut més avançat.
+La resta d'apartats com les Directives i els Composables, encara que són útils i estaria bé conèixer-ho, quedarien com un contingut més avançat.
 
 ### Components
 
@@ -26,29 +26,29 @@ Entrant en el detall dels components podrem observar que podem separar el contin
 
 ![alt text](images/detall_component.png)
 
-1. **Introducció**: La introducció ens descriu el que fa el component
-2. **API**: Aquest apartat ens resumeix totes les opcions que te disponible el component.
-3. **Exemples**: Exemples de casos d'us.
+1. **Introducció**: La introducció ens descriu què fa el component
+2. **API**: Aquest apartat ens resumeix totes les opcions que té disponibles el component.
+3. **Exemples**: Exemples de casos d'ús.
 
-Encara que els exemples ens pot clarificar el funcionament, l'apartat d'API es el que ens dona més informació
+Encara que els exemples ens poden clarificar el funcionament, l'apartat d'API és el que ens dona més informació
 
 ![alt text](images/detall_api.png)
 
 Dependrà del component, però poden tenir divesos apartats. Com podeu observar es corresponen a les formes de Vue d'interactuar entre components (props, emits, slots...)
 
-- **Props**: Les propietats son els paràmetres amb el que podem configurar el component
-- **Slots**: La forma de personalitzar parts del còdi
-- **Events**: Els events son els emits que te el component
-- **Methods**: Es correspondria als exposes del components, s'ha d'accedir a traves de la referencia del component.
-- **ComputedProps**: Son unes propietats que s'accedeix a través de la referencia del component. No hi ha massa components que ho tenguin.
+- **Props**: Les propietats són els paràmetres amb els que podem configurar el component
+- **Slots**: La forma de personalitzar parts del codi
+- **Events**: Els events són els emits que té el component
+- **Methods**: Es correspondria als exposes del components, s'ha d'accedir a través de la referència del component.
+- **ComputedProps**: Són unes propietats a les quals s'accedeix a través de la referència del component. No hi ha massa components que ho tenguin.
 
 ## Exemples pràctics
 
 ### Llistat
 
-Els llistat son la formà més típica de mostrar un gran conjunt de dades. Així i tot no hem de caure en la idea de que sempre que tenim un llistat s'ha de mostrar en format llista, quant es tracte de llistes de pocs elements pot ser més recomanable usar una altre representació.
+Els llistats són la forma més típica de mostrar un gran conjunt de dades. Així i tot, no hem de caure en la idea de que sempre que tenim un llistat s'ha de mostrar en format llista, quan es tracta de llistes de pocs elements, pot ser més recomanable usar una altra representació.
 
-Normalment els llistat aniran associats a una vista, ja que es sol accedir directament a traves d'una ruta. Aixi i tot no hi hauria problema en adaptar l'exemple a un component en el seu cas.
+Normalment els llistat aniran associats a una vista, ja que es sol accedir directament a través d'una ruta. Així i tot, no hi hauria problema en adaptar l'exemple a un component, en el seu cas.
 
 ```html
 <template>
@@ -68,7 +68,7 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
       >
         <template #top>
           <!-- Definim la capçalera mitjançant un slot. 
-          Aquesta contindrà un filtre i un boto per a crear -->
+          Aquesta contindrà un filtre i un botó per a crear -->
           <FiltreExpedient v-model="filtreExpedient" class="col-grow" />
 
           <q-btn
@@ -92,7 +92,7 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
         </template>
 
         <template #body-cell-accions="props">
-          <!-- Un darrer slot per les acciones, en aquest cas per accedir a la vista de l'expedient. -->
+          <!-- Un darrer slot per les accions, en aquest cas per accedir a la vista de l'expedient. -->
           <q-td :props="props">
             <q-btn
               flat
@@ -125,20 +125,20 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
   import { useExpedients } from '../composables/useExpedients'
 
   const { t } = useI18n()
-  // Definim la referencia al component d'edició de l'expedient
+  // Definim la referència al component d'edició de l'expedient
   const expedientFormDialog = ref()
-  // Usant el composable obtenim les dades necessaries per mostrar a la vista.
+  // Usant el composable obtenim les dades necessèries per mostrar a la vista.
   const { expedients, filtreExpedient, isFetching } = useExpedients()
-  // Un mètode per a la creació d'expedient
+  // Un mètode per a la creació d'expedients
   const nouExpedient = () => {
     const _expedient = Expedient.from()
     // És el lloc ideal per inicialitzar les dades de l'expedient
     _expedient.data = new Date()
-    // Finalment obrim el dialog
+    // Finalment, obrim el dialog
     expedientFormDialog.value.open(_expedient)
   }
 
-  // Inicialitzam les "migas de pan", s'ha de fer dins l'onmounted ja que sinó 't' no esta inicialitzat.
+  // Inicialitzam les "migas de pan", s'ha de fer dins l'onmounted ja que sinó 't' no està inicialitzat.
   onMounted(() => {
     useBreadcrumbs([
       {
@@ -150,10 +150,10 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
     ])
   })
 
-  // La part important del llistat, definir les columnes. Notem que es un mètode degut a que 't' no esta inicialitzat a l'inici. També es podria fer amb un computed o un ref i onMounted.
+  // La part important del llistat, definir les columnes. Notem que és un mètode degut a que 't' no està inicialitzat a l'inici. També es podria fer amb un computed o un ref i onMounted.
   const columns = (): QTableColumn[] => [
     {
-      name: 'id', // nom intern de la columna, un dels usos es definir l'slot
+      name: 'id', // nom intern de la columna, un dels usos és definir l'slot
       label: t('exp.id'), // Capçalera, idealment ha de venir de tradiccions
       field: 'id', // Camp de l'objecte que es mostrarà
       sortable: true,
@@ -182,7 +182,7 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
       align: 'left',
     },
     {
-      // Les accions les definim, pero es personalitzen amb un slot
+      // Les accions les definim, però es personalitzen amb un slot
       name: 'accions',
       label: '',
       field: 'id',
@@ -190,23 +190,23 @@ Normalment els llistat aniran associats a una vista, ja que es sol accedir direc
   ]
 ```
 
-Aquest es un exemple bàsic on s'han vist les casuïstiques més habituals, pero les taules tenen multitut d'opcions que podeu inveestigar a la documentació oficial.
+Aquest és un exemple bàsic on s'han vist les casuístiques més habituals, però les taules tenen multitut d'opcions que podeu investigar a la documentació oficial.
 
 ### Form Dialog
 
-L'edició de les dades es un dels altres pilars de les aplicacions. En aquest cas usarem un dialog en lloc d'una vista ja que son més versatils. En qualsevol cas l'ideal seria reutilitzar el mateix formulari per a la creació i modificació (Sempre que no hi hagui grans diferencies)
+L'edició de les dades és un dels altres pilars de les aplicacions. En aquest cas, usarem un dialog en lloc d'una vista, ja que són més versàtils. En qualsevol cas, l'ideal seria reutilitzar el mateix formulari per a la creació i modificació (sempre que no hi hagi grans diferències)
 
-A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar mega-formularis i en el seu lloc usar petits formularis que modifiquin coses concretes. En aquest exemple el formulari editarà les propietats de l'expedient i l'edició, per exemple, del titular anirà en un altre.
+A fi de que el codi sigui més fàcil de mantenir hauríem d'intentar evitar mega-formularis i, en el seu lloc, usar petits formularis que modifiquin coses concretes. En aquest exemple, el formulari editarà les propietats de l'expedient i l'edició, per exemple, del titular anirà en un altre.
 
 ```html
 <template>
   <!-- Definim el dialog, al ser un cas especial no fa falta deixar un div que englobi tot -->
-  <!-- Per evitar problemes de typescrip veim que únicament sigui visible si te expedient -->
+  <!-- Per evitar problemes de typescrip veim que únicament sigui visible si té expedient -->
   <q-dialog v-if="expedient" v-model="dialog" persistent>
     <q-card style="width: 1280px; max-width: 90vw">
     
       <q-toolbar class="bg-primary text-white">
-        <!-- Capçalera de la card dinàmica, en funció de si es edició o creació -->
+        <!-- Capçalera de la card dinàmica, en funció de si és edició o creació -->
         <q-toolbar-title>
           {{ expedient.id ? t('ui.update') : t('ui.create') }}
           {{ t('exp.expedient').toLowerCase() }}
@@ -232,7 +232,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             :rules="[obligatori]"
           />
 
-          <!-- El ImputDate es un component personalitzat, imita l'estil de quasar. El motiu d'usar un component personalitzat es que quasar manetja les dates en format text i no Date -->
+          <!-- El ImputDate és un component personalitzat, imita l'estil de quasar. El motiu d'usar un component personalitzat és que quasar maneja les dates en format text i no Date -->
           <InputDate
             v-model="expedient.data_registre"
             class="col-12 col-sm-6 col-md-4 col-lg-3"
@@ -242,7 +242,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             clearable
           />
 
-          <!-- Un altre component personalitzat per mostrar un boto, per defecte amb true/false, però es pot personalitzar amb la propietat opcions -->
+          <!-- Un altre component personalitzat per mostrar un botó, per defecte, amb true/false, es pot personalitzar amb la propietat opcions -->
           <InputButton
             class="col-12 col-sm-6 col-md-4 col-lg-3"
             v-model="expedient.urgencia"
@@ -250,7 +250,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             :color="expedient.urgencia ? 'negative' : 'positive'"
           />
 
-          <!-- Select simple, es important no deixar-se les propietats emit-value i map-opcions, en cas contrari ens emplenarà el valor com a objecte -->
+          <!-- Select simple, és important no deixar-se les propietats emit-value i map-opcions, en cas contrari, ens emplenarà el valor com a objecte -->
           <q-select
             v-model="expedient.motiu_derivacio_id"
             emit-value
@@ -265,7 +265,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             clearable
           />
 
-          <!-- Selector simple amb filtre, es útil en el cas de tenir moltes opcions. Es important tenir marcada l'opció use-input ja que sinó no es podrà escriure -->
+          <!-- Selector simple amb filtre, és útil en el cas de tenir moltes opcions. És important tenir marcada l'opció use-input, ja que sinó no es podrà escriure -->
           <q-select
             v-model="expedient.treballador_social_id"
             emit-value
@@ -279,7 +279,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             clearable
           />
 
-          <!-- Un darrer exemple de selector múltiple. Es imprescindible marcar l'opció multiple. També destacar la propietat use-chips per a que es vegi millor.  -->
+          <!-- Un darrer exemple de selector múltiple. És imprescindible marcar l'opció multiple. També destacar la propietat use-chips per a que es vegi millor.  -->
           <q-select
             v-model="proces.motius_consulta_id"
             emit-value
@@ -306,7 +306,7 @@ A fi de que el còdi sigui més fàcil de mantenir hauriem d'intentar evitar meg
             :label="t('exp.observacions')"
           />
 
-          <!-- Finalment els tenim els botos en un component extern per reutilitzar còdi. En grans línies es un button type submit per guardar un button normal per eliminar -->
+          <!-- Finalment, tenim els botos en un component extern per reutilitzar codi. En grans línies és un button type submit per guardar un button normal per eliminar -->
           <FormButtons
             class="col-12"
             :is-update="!!expedient.id"
@@ -351,9 +351,9 @@ Els subcomponents usats els podreu trobar dins el projecte
   // També hem de definir una deferencia al dialog
   const dialog = ref<boolean>(false)
 
-  // Definim l'expose que obrirà el dialog, i a més inicialitzarà l'objecte a editar
+  // Definim l'expose que obrirà el dialog i, a més, inicialitzarà l'objecte a editar
   const open = (_expedient?: Expedient) => {
-    // Es important realitzar una copia i no editar directament la referencia, es el que fa el mètode from. També ens mapeja les relacions NM
+    // És important realitzar una còpia i no editar directament la referència, és el què fa el mètode from. També ens mapeja les relacions NM
     expedient.value = Expedient.from(_expedient)
 
     dialog.value = true
@@ -364,7 +364,7 @@ Els subcomponents usats els podreu trobar dins el projecte
   // Instanciam el composable d'edició
   const { update, isUpdating, esborra, isDeleting } = useExpedientUpdate({
     onSuccess: (data, variables) => {
-      // En aquest cas, si es una creació cambiam de vista i una modificació tancam el dialog
+      // En aquest cas, si és una creació cambiam de vista i una modificació tancam el dialog
       if (variables.id) {
         dialog.value = false
       } else {
@@ -391,7 +391,7 @@ Els subcomponents usats els podreu trobar dins el projecte
 
 #### Rules
 
-Les rules es els que ens permet validar el formulari de forma dinàmica. El seu funcionament es senzill encara que pot no ser trivial de comprendre.
+Les rules són les que ens permet validar el formulari de forma dinàmica. El seu funcionament és senzill encara que pot no ser trivial de comprendre.
 
 La propietat rules accepta un array de funcions, una per cada validació. Aquestes funcions han de retornar o `true` o un string amb el missatge d'error.
 
@@ -404,18 +404,18 @@ const obligatori = (val) => {
   }
 }
 ```
-Si es així per que els exemples que ens posa es veuen d'aquesta manera:
+Si es així, per què els exemples que ens posa es veuen d'aquesta manera?
 ```typescript
  val => val.length <= 3 || 'Please use maximum 3 characters'
 ```
 
-Això es deu a que amb JavaScript la validació OR no retorna un boolea, sinó el primer objecte evaluat com a true. Es a dir, si la longitud de val es 2 es complirà la primera evaluació i retornara `true`, pero si la longitud es 4, la primera sera `false`, continuarà l'evaluació i retornara la cadena de text, encara que aquesta s'hagui evaluat com a `true`
+Això es deu a que amb JavaScript la validació OR no retorna un boolea, sinó el primer objecte evaluat com a true. És a dir, si la longitud de val és 2 es complirà la primera avaluació i retornarà `true`, però si la longitud és 4, la primera serà `false`, continuarà l'avaluació i retornarà la cadena de text, encara que aquesta s'hagui avaluat com a `true`
 
 ![alt text](images/this_is_javascript.png)
 
 ### Filtre
 
-Anam a veure un altre element típic en una aplicació com es el filtre. A l'exemple del llistat hem vist com cridavem aquest component. La part del template es molt semblant amb formulari vist anteriorment.
+Anam a veure un altre element típic en una aplicació com és el filtre. A l'exemple del llistat hem vist com cridàvem aquest component. La part del template és molt semblant amb formulari vist anteriorment.
 
 ```html
 <template>
@@ -454,7 +454,7 @@ Anam a veure un altre element típic en una aplicació com es el filtre. A l'exe
 </template>
 ```
 
-A la part del còdi es on hi ha la part interessant. Per evitar que cada vegada que fan un canvi a un input del filtre es generi una consulta hem de clonar el filtre per a no tenir la mateixa referencia.
+A la part del codi és on hi ha la part interessant. Per evitar que cada vegada que fan un canvi a un input del filtre es generi una consulta hem de clonar el filtre per a no tenir la mateixa referència.
 
 ```typescript
 import { minLength, obligatori } from '@/core/utils/validacionsQuasar'
@@ -475,7 +475,7 @@ import { minLength, obligatori } from '@/core/utils/validacionsQuasar'
     inputClass: 'col-12 col-sm-6 col-md-2 col-lg-2',
   })
 
-  // En lloc d'usar un computed obtenim el filtre de props i per no usar la mateixa deferencia feim una copia del filtre.
+  // En lloc d'usar un computed obtenim el filtre de props i, per no usar la mateixa deferència, feim una còpia del filtre.
   const filtre = ref({ ...props.modelValue })
 
   interface Emits {

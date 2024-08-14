@@ -3,7 +3,7 @@
 
 TypeScript és un llenguatge de programació que, en el nostre cas, no s'executa directament sinó que es transpila a JavaScript de forma que pugui ser executat a un navegador web.
 
-Al fitxer tsconfig.json del nostres projecte podem veure les opcions de transpilació.
+Al fitxer tsconfig.json del nostre projecte podem veure les opcions de transpilació.
 
 L'aportació principal de TypeScript sobre JavaScript és el tipatge de dades.
 
@@ -38,7 +38,7 @@ let name: string = Cardtype[2];
 ```
 
 ### any
-Es equivalent a no definir tipus
+És equivalent a no definir tipus
 ```typescript
 const data: any = "4";
 const mix: any[] = [1,"asd",false];
@@ -53,7 +53,7 @@ function greet(name: string): void {
 ```
 
 ## Objectes
-Amb TypeScript podem definir clases i herència
+Amb TypeScript podem definir classes i herència
 ```typescript
 class Person {
    // propietats
@@ -87,7 +87,7 @@ class Person {
 ```
 
 ### Interface i implements
-Es poden definir interficies i aquestes ser implementades
+Es poden definir interfícies i, aquestes, ser implementades
 ```typescript
 interface IUser {
   name: string;
@@ -98,7 +98,7 @@ class Person implements IUser {...}
 ```
 
 ### Herencia
-Les classes i les interficies es poden extendre entre elles
+Les classes i les interfícies es poden extendre entre elles
 ```typescript
 // Classes
 class Person {...}
