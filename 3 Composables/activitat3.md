@@ -1,3 +1,4 @@
 # Activitats 3
 
-1. Creau un composable que vos pugui ser útil, pot ser de temàtica lliure, o en el seu defecte, per exemple un composable que rebi les dades d'una persona y retorni l'edat, si el dni es vàlid...
+1. Crea un composable que permeti gestionar un comptador amb funcions per incrementar, decrementar i resetejar el valor.
+1. Desenvolupa un composable useToggle que gestioni l'estat d'un commutador boolean.
