@@ -46,9 +46,10 @@ A continuació us llistam una sèrie de complements a tenir en compte:
 
 La configuració del workspace permet establir una configuració per a un projecte en concret.
 
-Per a poder establir la configuració s'ha d'editar (o crear) el fitxer `<arrel projecte></arrel>/.vscode/settings.json`. 
+Per a poder establir la configuració s'ha d'editar (o crear) el fitxer `<arrel projecte></arrel>/.vscode/settings.json`.
 
 A continuació la configuració recomanada per poder personalitzar al vostre gust:
+
 ```json
 {
   "eslint.alwaysShowStatus": true,
@@ -94,9 +95,20 @@ Una vegada seleccionada aquesta opció haurem de marcar el llenguatge en concret
 		]
 	}
 ```
+
 El `prefix` és el nom a travé del qual cercarem i el `body` el contingut que es pintarà. Destacar que es poden posar variables amb $1, $2... Una vegada s'inserti el codi el cursor es posarà al lloc de les variables per a poder completar.
 
 [Més informació](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
+
+## Vue Devtools
+
+Una altre eina important és l'extensió de navegador `Vue Devtools` que facilita el debbug d'aplicacions Vue.js.
+
+La podeu instalar desde la web oficial: https://devtools.vuejs.org
+
+Una vegada accediu a una web amb Vue l'icona de l'extensió s'activarà i si accediu al developer tools del navegador tindreu una nova pipella anomenada Vue amb distintes eines que s'aniràn explicant al llarg del curs.
+
+![alt text](./imatges/vueDevtools.png)
 
 ## Esquelet
 
@@ -104,11 +116,11 @@ Descarregarem l'esquelet de Vue 3 des de l'enllaç adjunt al curs en format ZIP 
 
 Una vegada dins hem de llegir i seguir les instruccions del README.md
 
-*Amb vscode podem previsualitzar el fitxer fent clic amb el boto secundari damunt el fitxer:*
+_Amb vscode podem previsualitzar el fitxer fent clic amb el boto secundari damunt el fitxer:_
 
 ![Preview](./imatges/preview.png)
 
-Encara que les opcions del `.env` no siguin usades, sí que s'ha de crear el fitxer.
+Encara que les opcions del `.env` no siguin usades, sí que s'ha de crear el fitxer en base al `.env.pre`.
 
 ### Docker
 

@@ -55,30 +55,35 @@ Disposam de tres formes principals: Props, Emits i Exposes
 Les propietats són valors de lectura que envia un component pare al fill.
 
 Definició al component fill
+
 ```typescript
 interface Props {
-  expedient: Expedient
-  actiu?: boolean //paràmetre opcional
+  expedient: Expedient;
+  actiu?: boolean; //paràmetre opcional
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 // opcionalment podriem definir valors per defecte
 const props = withDefaults(defineProps<Props>(), {
-  actiu: true
-})
+  actiu: true,
+});
 ```
+
 Al component pare faríem la cridada al component fill
+
 ```html
 <ExpedientCard :expedient="expedient" actiu />
 ```
-*Notar que si volem establir una propietat boleana a true basta definir el seu nom sense especificar valor*
+
+_Notar que si volem establir una propietat boleana a true basta definir el seu nom sense especificar valor_
 
 Les props no són reactives per defecte, per tant, si canvien no s'actualitzen. Una solució podria ser usar toRef per convertir una propietat a ref
+
 ```typescript
-const expedient = toRef(props, 'expedient')
+const expedient = toRef(props, "expedient");
 // o
-const { expedient } = toRefs(props)
+const { expedient } = toRefs(props);
 ```
 
 ### Emits
@@ -86,24 +91,27 @@ const { expedient } = toRefs(props)
 Si volem retornar valors al component pare hem d'usar els emits, aquest executaran una funció que s'ha de definir al component pare.
 
 Al component fill definim els emits. Aquest ha de tenir un nom i poden tenir variables
+
 ```typescript
 interface Emits {
-  (e: 'update', data: Expedient): void
+  (e: "update", data: Expedient): void;
 }
-const emit = defineEmits<Emits>()
+const emit = defineEmits<Emits>();
 
 // En el moment d'actualitzar les dades hem de cridar l'emit
-emit('update', expedient.value)
+emit("update", expedient.value);
 ```
+
 Al component pare hem de definir un mètode que s'executarà quan el fill cridi l'emit. Aquest mètode rebrà com a paràmetres els indicats a la definició.
+
 ```html
-<ExpedientCard @update="actualitzaExpedient"/>
+<ExpedientCard @update="actualitzaExpedient" />
 ```
 
 > **Curiositat:**
-> 
+>
 > Al cridar un emit no sabem si el component pare ha establert un mètode que s'executarà. En alguns casos, calcular el valor que s'ha d'emetre, pot ser costos i ens interessa saber si el pare ha definit un mètode o no, ja que, en cas negatiu, no fa falta executar la lògica.
-> 
+>
 > En aquests casos podem definir una Prop amb el mateix nom del mètode precedida de 'on':
 
 ```typescript
@@ -123,32 +131,33 @@ if(props.onUpdate){
 
 ```
 
-
 ### Expose
 
 Finalment, tenim els expose que ens permeten executar un mètode dins un component fill des del component pare. Per exemple, pot ser d'utilitat per obrir un dialog definit dins un component.
 
 Definim l'expose al component fill
+
 ```typescript
 const open = (_expedient: Expedient) => {
-  expedient.value = Expedient.from(_expedient)
-  dialog.value = true
-}
+  expedient.value = Expedient.from(_expedient);
+  dialog.value = true;
+};
 
-defineExpose({ open })
+defineExpose({ open });
 ```
 
 Al component pare hem de definir un ref i cridar el mètode
+
 ```html
 <ExpedientFormDialog ref="expedientFormDialog" />
 ```
+
 ```typescript
 // instanciam la variable, ha de tenir el mateix nom que el ref del component
-const expedientFormDialog = ref()
+const expedientFormDialog = ref();
 
 // El moment de voler cridar el mètode
-expedientFormDialog.value.open(expedient.value)
-
+expedientFormDialog.value.open(expedient.value);
 ```
 
 ## Slots
@@ -175,14 +184,14 @@ Dins el component fill s'ha de definir la posició d'aquest component.
 </div>
 ```
 
-### Scope 
+### Scope
 
 Per defecte, els slots tenen accés a les variables del component pare, però no a les del fill. És a dir, si el component d'exemple CustomCard, rep un paràmetre estat amb el que calcula el color, dins el nostre slot no hi tendrem accés.
 
 Això es pot solucionar passant paràmetres al slot.
 
 ```html
-  <slot :color="colorCalculat"></slot>
+<slot :color="colorCalculat"></slot>
 ```
 
 Ara al component pare tenim accés a la propietat color definit `v-slot`
@@ -200,9 +209,7 @@ Definir un scope no és obligatori i es pot donar el cas que un component pare n
 Senzillament s'ha de definir el codi dins l'slot.
 
 ```html
-  <slot>
-    // Codi de fallback
-  </slot>
+<slot> // Codi de fallback </slot>
 ```
 
 ### Named
@@ -252,7 +259,7 @@ Existeix la possibilitat de definir slots de forma dinàmica. Per a definir un s
 <template v-slot:[nomSlot]></template>
 <!-- Es pot combinar amb part fixa -->
 <template v-slot:partFix-[nomSlot]></template>
-  ```
+```
 
 > Cas pràctic
 
@@ -261,10 +268,10 @@ Els noms dinàmic són especialment útils per a definir slots d'arrays d'elemen
 ```html
 <!-- Cada element genererà un slot anomenat 'element-{id}'-->
 <template
-  v-for="element of elements" 
+  v-for="element of elements"
   :key="element.id"
-  v-slot:element-[element.id] 
-  :element="element" 
+  v-slot:element-[element.id]
+  :element="element"
 >
   {{ element.label }}: {{ element.value }}
 </template>
@@ -274,10 +281,22 @@ En declarar el component, podem reemplaçar alguns elements del nostre llistat p
 
 ```html
 <CustomList>
-  <template v-slot:element-estat='slotProps'>
+  <template v-slot:element-estat="slotProps">
     <span :class="'bg-color-' + slotProps.element.value">
       {{ slotProps.element.value }}
     </span>
   </template>
 </CustomList>
 ```
+
+## DevTools: inspector de components
+
+La primera eina que veurem es l'inspector de components. De forma similar a l'inspector d'elements html del developer tools del navegador, l'inspector de components ens permet veure els componentns en una estructura d'arbre. Una vegada cercam i accedim a un component podem veure les variables que hem declarat dins el setup i el seu valor actual.
+
+![alt text](./imatges/inspectorComponents.png)
+
+1. Pipella de l'inspector de components.
+2. Cercador de components
+3. Cercador de components de forma grafica, ens permet seleccionar el component clicant el component visualment.
+4. Navegació en forma d'arbre dels components.
+5. Propietats del component seleccionat, ens permet veure en temps reals els valors i modificar-los.

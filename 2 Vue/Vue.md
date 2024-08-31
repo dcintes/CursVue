@@ -45,13 +45,14 @@ En el cas de propietat d'una etiqueta html precedirem de `:` l'etiqueta per a in
 Dins l'apartat script es definiran els imports, propietats, mètodes... que usarem al template. Al usar el composition API totes les propietats definides seran automàticament accesibles al template, cosa que no passa amb el options API
 
 ```typescript
-import {Persona} from '@/model/Persona'
+import { Persona } from "@/model/Persona";
 
-const persona: Persona = new Persona('Joan');
+const persona: Persona = new Persona("Joan");
 
-const formulariOk; boolena = false
+const formulariOk: boolean = false;
 ```
-*El codi anterior és un exemple no funcional a falta de veure la reactivitat*
+
+_El codi anterior és un exemple no funcional a falta de veure la reactivitat_
 
 ## Directives
 
@@ -77,10 +78,10 @@ Aquesta directiva, que ja hem vist en la forma abreujada, permet enllaçar una p
 De forma semblant a l'anterior aquesta directiva ens permet enllaçar una etiqueta o element html a un event JS executant un mètode definit
 
 ```html
-<button v-on:click="metodeButtonClic"> ... </button>
+<button v-on:click="metodeButtonClic">...</button>
 
 <!-- forma abreujada -->
-<button @click="metodeButtonClic"> ... </button>
+<button @click="metodeButtonClic">...</button>
 ```
 
 ### v-if
@@ -88,15 +89,9 @@ De forma semblant a l'anterior aquesta directiva ens permet enllaçar una etique
 Aquesta directiva, com el seu nom indica, ens permet renderitzar de forma opcional elements HTML. Es pot combinar, de forma opciona, amb `v-else-if` i `v-else`. En aquests casos els elements han d'anar precedits un darrere l'altre.
 
 ```html
-<div v-if="persona.especialitat === 'T'">
-  Tècnic
-</div>
-<div v-else-if="persona.expecialitat === 'A'">
-  Administratiu
-</div>
-<div v-else>
-  Sense especialitat
-</div>
+<div v-if="persona.especialitat === 'T'">Tècnic</div>
+<div v-else-if="persona.expecialitat === 'A'">Administratiu</div>
+<div v-else>Sense especialitat</div>
 ```
 
 ### v-for
@@ -105,13 +100,11 @@ Com el seu nom indica ens permet recórrer un llistat per a renderitzar el conti
 
 ```html
 <div v-for="observacio in observacions">
- {{ observacio.data }}: {{ observacio.text }}
+  {{ observacio.data }}: {{ observacio.text }}
 </div>
 
 <!-- Alternativament es pot obtenir també l'índex -->
-<div v-for="(titol, index) in titols">
- {{ index }}): {{titol}}
-</div>
+<div v-for="(titol, index) in titols">{{ index }}): {{titol}}</div>
 ```
 
 > **NOTA:** No està recomanant l'ús de `v-for` i `v-if` al mateix element HTML degut a que el comportament pot resultar no intuitiu. EL segÜent codi no funcionaria.
@@ -126,9 +119,7 @@ Les directives es poden aplicar a elements HTML, això implica que generen una n
 
 ```html
 <div v-for="nota of notes">
-  <template v-if="nota > 5">
-    {{ nota }}
-  </template>
+  <template v-if="nota > 5"> {{ nota }} </template>
 </div>
 ```
 
@@ -143,9 +134,9 @@ Per a usar un hook s'ha de definir aquest amb un mètode que s'executarà arriba
 ```typescript
 onMounted(() => {
   // Codi a executar
-})
+});
 ```
 
 A la següent imatge es pot veure el cicle complet.
 
-![Lifecycle]('./imatges/lifecycle.png')
+![Lifecycle](imatges/lifecycle.png)

@@ -14,7 +14,7 @@ Dins VUE disposam de la llibreria Pinia per a implementar aquesta aproximació. 
 
 https://pinia.vuejs.org/
 
-Pinia es la llibreria recomanada, per VUE, per a la implementació de les stores en aquest framework. 
+Pinia es la llibreria recomanada, per VUE, per a la implementació de les stores en aquest framework.
 
 De forma semblant als composables, un store defineix una lògica i exposa unes propietats i mètodes(actions) per a poder interactuart amb el contingut.
 
@@ -30,7 +30,7 @@ export const useAppStore = defineStore('app', () => {
     currentUser.value = user
   }
 
-  return { 
+  return {
     // Propietats
     currentUser
 
@@ -43,21 +43,22 @@ export const useAppStore = defineStore('app', () => {
 La forma de cridar aquesta store es senzillament cridant l'export que hem definit. Hem de tenir clar que sempre que cridem a una store obtindrem la mateixa instancia (aquesta es crea la primera vegada que s'usa) i actualitzar les dades desde un component actualitzarà la resta de components que facin us de la mateixa store (sempre que haguem implementat correctament la reactivitat)
 
 ```typescript
-const appStore = useAppStore()
+const appStore = useAppStore();
 
 // Per a accedir a una propietat del store
-appStore.currentUser
+appStore.currentUser;
 ```
+
 ### Reactivitat
 
 Les propietat d'una store no son reactives per defecte quant es descomposen. Per descomposar una store en propietats reactives hem de fer un l'eina incorporada a pinia: `storeToRefs`
 
 ```typescript
 // No s'actualitzarà!!
-const { currentUser } = appStore
+const { currentUser } = appStore;
 
 // Aquesta es la forma correcte
-const { currentUser } = storeToRefs(appStore)
+const { currentUser } = storeToRefs(appStore);
 ```
 
 D'aquesta manera tots els canvis d'un component a l'store quedaràn reflectits a la resta de components de forma automàtica.
@@ -68,7 +69,7 @@ Les stores son una eina pràctica, però no implica que sigui l'adequant per a t
 
 ### Casos d'ús:
 
-*Els seguents exemples es mostren per separat, però a la practica es poden integrar en una mateixa store.*
+_Els seguents exemples es mostren per separat, però a la practica es poden integrar en una mateixa store._
 
 #### Breadcrumbs: dades de navegació
 
@@ -90,29 +91,29 @@ Mitjançant propietats i emits ens implicaria definir la lògica de traspas d'in
 
 ```typescript
 export type BreadCrumbsItem = {
-  label?: string
-  to?: RouteLocationRaw | undefined
-  icon?: string | undefined
-}
+  label?: string;
+  to?: RouteLocationRaw | undefined;
+  icon?: string | undefined;
+};
 
-export const useBreadCrumbsStore = defineStore('BreadCrumbs', () => {
-  const breadcrumbsItems: BreadCrumbsItem[] | null
+export const useBreadCrumbsStore = defineStore("BreadCrumbs", () => {
+  const breadcrumbsItems: BreadCrumbsItem[] | null;
 
   return {
-    breadcrumbsItems
-  }
-})
+    breadcrumbsItems,
+  };
+});
 ```
 
 Amb aquesta store, podem modificar la informació de navegació desde qualsevol pàgina a traves de l'store.
 
 ```typescript
-const breadCrumbsStore = useBreadCrumbsStore()
+const breadCrumbsStore = useBreadCrumbsStore();
 
 breadCrumbsStore.breadcrumbsItems = [
-  {label: 'Home'},
-  {label: 'Expedients'}
-]
+  { label: "Home" },
+  { label: "Expedients" },
+];
 ```
 
 #### Guardar filtre durant la navegació
@@ -122,28 +123,34 @@ Una altre situació on usar una store podria ser el cas del filtre de llistats. 
 La solució per a guardar el filtre entre la navegació seria usar uns store.
 
 ```typescript
-export const useFiltresStore = defineStore('Filtres', () => {
-  const filtreExpedient: FiltreExpedient = new FiltreExpedient()
-  const filtreUsuari: FiltreUsuari = new FiltreUsuari()
+export const useFiltresStore = defineStore("Filtres", () => {
+  const filtreExpedient: FiltreExpedient = new FiltreExpedient();
+  const filtreUsuari: FiltreUsuari = new FiltreUsuari();
 
   return {
     filtreExpedient,
     filtreUsuari,
-  }
-})
+  };
+});
 ```
 
 Al component de filtre modificariem el filtre dins l'store, d'aquesta manera, al tornar a la pàgina del llistat, tendiem els valors previament usats.
 
 ```html
-<q-input 
-  v-model="filtreExpedient.numero" 
-  label="Núm Expedient"
-/>
+<q-input v-model="filtreExpedient.numero" label="Núm Expedient" />
 ```
 
 ```typescript
-const filtreStore = useFiltresStore()
-const { filtreExpedient } = storeToRefs(filtreStore)
+const filtreStore = useFiltresStore();
+const { filtreExpedient } = storeToRefs(filtreStore);
 ```
 
+## DevTools: Stores
+
+Una altre utilitat del DevTools es veure les stores que tenim instanciades i els valors que contenen.
+
+![alt text](./imatges/devToolsStore.png)
+
+1. Pipella de l'opció de stores Pinia.
+2. Llistat de stores que estan instanciades. (Fins que no es crida una store per primera vegada no es crea la instancia)
+3. Es mostra els valors que te l'store actualment. Ves variables que no s'exposen amb el return no es mostren. Es pot modificar el valor de l'estat de l'store.
