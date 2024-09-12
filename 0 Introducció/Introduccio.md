@@ -39,7 +39,7 @@ A continuació us llistam una sèrie de complements a tenir en compte:
 - [Vue 3 Support - All In One](https://marketplace.visualstudio.com/items?itemName=Wscats.vue): Complements per a VUE3
 - [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets): Snippets per a VUE3
 - [CodeMetrics](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-codemetrics) (opcional): Calcula la complexitat del codi indicant quan convé millorar-ho.
-- [SolanLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (opcional): Recomanacions de millora de codi
+- [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (opcional): Recomanacions de millora de codi
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) (opcional): Canvi d'icones, especialment útil per a la identificació dels fitxers.
 
 ### Settings
