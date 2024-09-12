@@ -27,8 +27,8 @@ Els plugins o extensions són complements addicionals que amplien la funcionalit
 
 A continuació us llistam una sèrie de complements a tenir en compte:
 
-- [Vue Volar extension Pack](https://marketplace.visualstudio.com/items?itemName=MisterJ.vue-volar-extention-pack)
-  - [Vue Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar): Suport per a VUE
+- [Vue Extension Box](https://marketplace.visualstudio.com/items?itemName=MisterJ.vue-volar-extention-pack)
+  - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar): Suport per a VUE
   - [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense): autocompleta nom de fitxers
   - [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag): Tanca automàticament les etiquetes
   - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag): Canvia el nom a la parella d'etiquetes a l'editar-ne una.
