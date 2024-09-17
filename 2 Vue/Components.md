@@ -12,6 +12,51 @@ Els components són elements, normalment visuals, que ens permeten separar i reu
 - Les rutes no han d'apuntar directament a un component.
 - El nom del component ha de ser descriptiu i ha de contenir més d'una paraula. Ex: ExpedientFormDialog, ExpedientCard, ExpedientList...
 
+Els components, per definició, seran instanciats desde una vista o un altre component formant un arbre de relacións on l'arrel serà el layout. D'aquest layout partiran les vistes i finalment els components que poden formar distinta profunditat dins l'arbre. Posem un exemple:
+
+- Layout
+  - ExpedientList (view)
+    - ExpedientFiltre (component)
+      - Form (component)
+      - Input (component)
+      - Button (component)
+    - ExedientFormDialog (component)
+      - Form (component)
+      - Input (component)
+      - Input (component)
+      - InputDate (component)
+      - Button (component)
+    - Button (component)
+  - ExpedientView (view)
+    - ExpedientFormDialog (component)
+      - ...
+    - ...
+
+Com es pot veure un mateix component pot ser instanciat a distins llocs amb paràmetres diferents. Per exemple el component `ExpedientFormDialog` serà instanciat dins `ExpedientList` en mode creació i dins `ExpedientView` en mode edició.
+
+També es pot instanciar un mateix component multiples vegades dins un mateix component o vista. Per exemple el component `Input` dins `ExpedientFormDialog` per a editar les propietats `num_expedient` i `num_segex`.
+
+> Cas pràctic
+
+La part del template del darrer exemple podria quedar una cosa així
+
+```html
+
+<template>
+  <div>
+    <Form>
+      <Input v-model="expedient.num_expedient"/>
+      <Input v-model="expedient.num_segex"/>
+      <Button type="submit" :label="expedient.id ? 'Guardar' : 'Crear' "/>
+    </Form>
+  </div>
+</template>
+
+```
+*NOTA: Dins la part de script s'han d'importar el components*
+
+Aquesta jerarquia de components provoca que un component tengui el rol de `pare` i l'altre de `fill`.
+
 ## Tipus
 
 Diferenciarem els components en:

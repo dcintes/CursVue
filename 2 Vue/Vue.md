@@ -24,6 +24,8 @@ Un fitxer `.vue` tendrà tres parts `template`, `script` i `style` encara que pr
 </style>
 ```
 
+Tots els fitxers '.vue', ja sigui components o vistes, tenen aquesta estructura, la diferència entre vista i components és lògica.
+
 ### Template
 
 La sintaxis del template serà la mateixa que html de tota la vida amb l'excepció de certs elements vue per a intercalar les nostres variables.
@@ -86,7 +88,7 @@ De forma semblant a l'anterior aquesta directiva ens permet enllaçar una etique
 
 ### v-if
 
-Aquesta directiva, com el seu nom indica, ens permet renderitzar de forma opcional elements HTML. Es pot combinar, de forma opciona, amb `v-else-if` i `v-else`. En aquests casos els elements han d'anar precedits un darrere l'altre.
+Aquesta directiva, com el seu nom indica, ens permet renderitzar de forma opcional elements HTML. Es pot combinar, de forma opcional, amb `v-else-if` i `v-else`. En aquests casos els elements han d'anar precedits un darrere l'altre.
 
 ```html
 <div v-if="persona.especialitat === 'T'">Tècnic</div>
@@ -107,7 +109,7 @@ Com el seu nom indica ens permet recórrer un llistat per a renderitzar el conti
 <div v-for="(titol, index) in titols">{{ index }}): {{titol}}</div>
 ```
 
-> **NOTA:** No està recomanant l'ús de `v-for` i `v-if` al mateix element HTML degut a que el comportament pot resultar no intuitiu. EL segÜent codi no funcionaria.
+> **NOTA:** No està recomanant l'ús de `v-for` i `v-if` al mateix element HTML degut a que el comportament pot resultar no intuitiu. EL següent codi no funcionaria.
 
 ```html
 <div v-for="nota of notes" v-if="nota > 5"></div>
