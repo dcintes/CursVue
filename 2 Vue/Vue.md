@@ -125,6 +125,79 @@ Les directives es poden aplicar a elements HTML, això implica que generen una n
 </div>
 ```
 
+## Navegació (Routes)
+
+La navegació a través de les aplicacions VUE consta de dues parts, la primera es la definició de les rutes i la segona l'assignació a un boto o element per poder navegar cap allà.
+
+### Definició de les rutes
+
+Per a definir una ruta hem d'emplenar un objecte tipus `RouteRecordRaw` que te la seguent forma:
+
+```javascript
+  {
+    path: 'expedients', // path de la ruta al navegador ex: el.nostre.domini/expedients
+    component: ExpedientList, // Component al que fa referencia
+    name: 'ExpedientList', // Nom que assignam a la ruta
+    children: [] // En cas de tenir fills, les rutes serien relatives al pare ex: el.nostre.domini/expedients/<path.fill>
+  }
+```
+Es important que el path no contengui una `/` inicial ja que resetejariem la ruta (a no ser que aquesta sigui la intenció).
+
+Al path es poden especificar variables, això es fa precedint el nom de la variable per `:`, per exemple `path: 'expedients/:id'` defineix una propietat `id` poguent agafar qualsevol valor. Per tant les rutes `expedient/1`, `expedient/2348` o `expedient/nous` serien valides per accedir a aquesta vista.
+
+Amb l'exemple anterior pot ser hem notat que les rutes `expedients/:id` i `expedient/nous` poden entrar en conflicte ja que les dues poden resoldre una mateixa adreça. Hi ha diverses formes de tractar aquests casos, però la més senzilla és la classica de l'ordre.
+
+La propietat component es una constant que fa referencia a la nostra vista. Per a que es carregui de forma dinàmica ho hem de fer de la forma següent:
+
+```typescript
+const ExpedientList = () => import('../views/ExpedientList.vue')
+```
+
+Com es va veure al tema d'estructura cada mòdul té les seves rutes i aquestes s'importen dins `/src/config/routes.ts`.
+
+### Navegació
+
+Hi ha distintes formes d'especificar la navegació a una ruta en concret. Es pot fer de la forma tradicional, per el path (`/expedients`), pero seria més recomanable usar la navegació per nom. El nom es correspon a la propietat `name` de la ruta definida.
+
+Els objectes que permeten la navegació solen tenir una propietat `:to` que es la que hem d'emplenar per indicar el canvi de vista.
+
+```html
+<button :to="{ name: 'ExpedientList'} />
+
+// En cas de requirir parametres
+<button :to="{ name: 'ExpedientView', params: { id: expedient.id } } />
+```
+
+Si volem navegar des de el codi js hem d'usar el composable `useRouter` amb el mateix format.
+
+```typescript
+const router = useRouter()
+router.push({ name: 'ExpedientList' })
+```
+
+En cas d'una ruta amb variables probablement necessitarm accedir a elles, en aquest cas hem d'usar el composable `useRoute` (no confondre amb l'anterior)
+
+```typescript
+const route = useRoute()
+const { id } = route.params
+```
+
+### Menú
+
+El menú principal és una incorporació a l'esquelet i es pot configurar des de el fitxer `src/config/menu.ts` emplenant objectes tipus `ImasNavbarItemHeader` que tenen la següent forma:
+
+```typescript
+{
+    title: tc('ofi.oficina'), // Nom que es mostrarà
+    icon: 'fas fa-building', // Icona de l'item de menú
+    to: { name: 'ExpedientList' }, // Ruta a la que accedirà
+    active: () => {...}, // Mètode que s'executa per determinar si es mostra o no l'item. (per exemple per verificar el rol)
+    children: [] // Subnivell del mateixos elements
+}
+```
+
+Fer notar que les propietats `to` i `children` definides al mateix element causen un malfuncionament del menú.
+
 ## Lifecycle Hooks
 
 La part de l'script s'executa al carregar el component en questió. Això pot suposar un problema en certs casos que volem executar un codi en un moment concret, per exemple, al carregar o tancar el component.
