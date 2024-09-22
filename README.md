@@ -1,4 +1,4 @@
-# Curs de Vue 3 IMS
+# Curs de Vue 3 IMAS
 
 0. [Introducció](./0%20Introducció/Introduccio.md)
    - [JavaScript](./0%20Introducció/JavaScript.md)
